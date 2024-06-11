@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './style.css';
 import logo from './image/logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ toggleSidebar }) => {
+  const navigate = useNavigate();
+  const handleLoginButton = () => {
+    navigate("/register");
+  };
+
   return (
     <nav className="bg-cyan-900 p-4 sticky top-0 z-50 flex justify-between items-center">
       <div className="text-white font-bold text-xl navbar-logo flex items-center">
@@ -21,7 +27,8 @@ const Navbar = ({ toggleSidebar }) => {
         <a href="#about" className="text-white navbar-link">About Us</a>
       </div>
       <div className="hidden md:flex space-x-4">
-        <button className="navbar-button bg-white text-cyan-900 px-4 py-2 rounded-md  hover:from-emerald-950 hover:to-cyan-950">SIGN UP</button>
+        <button onClick={handleLoginButton}
+        className="navbar-button bg-white text-cyan-900 px-4 py-2 rounded-md  hover:from-emerald-950 hover:to-cyan-950">SIGN UP</button>
         <button className="navbar-button hover:from-emerald-950 hover:to-cyan-950 bg-cyan-700 text-white px-4 py-2 rounded-md">SIGN IN</button>
       </div>
     </nav>
